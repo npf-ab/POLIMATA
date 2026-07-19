@@ -2,16 +2,27 @@
 
 Un rastreador de estudio autodidacta: 12 disciplinas (Matemáticas, Física, Química,
 Biología, Computación, Psicología, Historia, Filosofía, Economía, Derecho, Geografía
-y Lenguas), con cientos de temas y subtemas ya precargados como checklist editable.
+y Lenguas), con cientos de temas y subtemas ya precargados como checklist editable,
+más una biblioteca con lector de ePub integrado.
 
-Marca lo que dominas, edita o borra cualquier subtema, y añade los tuyos. Todo vive
-en un único archivo `index.html`, sin backend ni dependencias que instalar.
+## ✨ Qué incluye
+
+- **Checklist editable** por disciplina: marca, edita, borra o añade temas y subtemas.
+- **Lecturas recomendadas** por disciplina (libros de referencia, marcables como leídos).
+- **Biblioteca personal**: sube tus propios archivos `.epub` (uno general y uno por disciplina).
+- **Lector integrado** que:
+  - recuerda en qué página te quedaste de cada libro,
+  - muestra las imágenes del libro con normalidad,
+  - puede **leer en voz alta** (texto a voz) con botón de play/pausa y control de velocidad,
+    resaltando la oración que se está leyendo,
+  - te deja **seleccionar texto** y guardarlo como 🔖 Marcador (con fecha), 📘 Definición
+    o ✏️ Ejercicio, etiquetado opcionalmente con el tema del temario al que pertenece.
+- **Conceptualario, Marcadores y Ejercicios** por disciplina, con salto directo de
+  vuelta al lugar del libro donde los guardaste.
 
 ## 🚀 Publicarlo en GitHub Pages (gratis, en ~2 minutos)
 
-1. Crea un repositorio nuevo en GitHub (puede ser público o privado, aunque
-   GitHub Pages gratuito solo publica repos públicos, o privados si tienes
-   plan de pago/organización).
+1. Crea un repositorio nuevo en GitHub (público, o privado si tienes plan de pago).
 2. Sube estos archivos al repositorio. Desde tu computadora, dentro de esta carpeta:
 
    ```bash
@@ -33,25 +44,37 @@ en un único archivo `index.html`, sin backend ni dependencias que instalar.
 
    `https://TU-USUARIO.github.io/TU-REPOSITORIO/`
 
-Esa es tu enciclopedia, accesible desde cualquier dispositivo con navegador.
+Guarda esa URL como favorito (o agrégala a la pantalla de inicio del celular) —
+es tu enciclopedia, accesible desde cualquier dispositivo con navegador.
 
-## 💾 Sobre el guardado del progreso
+## 💾 Sobre el guardado de datos
 
-Esta versión guarda tu progreso con `localStorage`, es decir: **queda guardado
-en el navegador de ese dispositivo**, no en una cuenta ni en la nube. Ten en cuenta:
+Todo se guarda **en el navegador de cada dispositivo**, no en una cuenta ni en la nube:
 
-- Si entras desde el celular y luego desde la laptop, verás progresos distintos
-  (cada navegador guarda el suyo).
-- Si borras los datos de navegación / caché del sitio, se pierde el progreso.
-- Es privado: nadie más que tú, en ese navegador, puede verlo u modificarlo.
+- El progreso del checklist, tus ediciones, y tus marcadores/definiciones/ejercicios
+  se guardan con `localStorage`.
+- Los archivos `.epub` que subas se guardan con `IndexedDB` (soporta archivos más
+  grandes que `localStorage`).
+- Si entras desde el celular y la laptop, cada uno guarda su propio progreso y su
+  propia biblioteca — no se sincronizan entre sí.
+- Si borras los datos de navegación / caché del sitio para ese dominio, se pierde
+  todo lo guardado ahí.
+- Es privado: nadie más que tú, en ese navegador, puede verlo o modificarlo.
 
-Si más adelante quieres progreso sincronizado entre dispositivos, se puede
-añadir un backend simple (por ejemplo, Firebase o Supabase) — avísame y lo
-armamos.
+Si más adelante quieres progreso y biblioteca sincronizados entre dispositivos,
+se puede añadir un backend simple (por ejemplo, Firebase o Supabase) — avísame y
+lo armamos.
+
+## 🔊 Sobre la lectura en voz alta
+
+Usa la Web Speech API del navegador (funciona en Chrome, Edge y la mayoría de
+navegadores modernos; puede no estar disponible en algunos navegadores muy
+antiguos o restringidos). La voz utilizada depende de las voces en español
+instaladas en tu sistema operativo/navegador, no es algo que la página controle.
 
 ## 🛠 Editar el contenido
 
-Todo el contenido (disciplinas, temas y subtemas por defecto) vive dentro de
-`index.html`, en la constante `DEFAULT_DATA` cerca del final del archivo.
-Puedes editarlo directamente ahí si prefieres cambiar los valores "de fábrica"
-en vez de hacerlo desde la interfaz.
+Todo el contenido por defecto (disciplinas, temas, subtemas y libros recomendados)
+vive dentro de `index.html`, en las constantes `DEFAULT_DATA` y `RECOMMENDED_BOOKS`
+cerca del inicio del script. Puedes editarlo directamente ahí si prefieres cambiar
+los valores "de fábrica" en vez de hacerlo desde la interfaz.
